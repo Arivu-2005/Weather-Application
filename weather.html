@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skyline — Weather</title>
+
+    <link rel="stylesheet" href="./weather.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <!-- ============ Top bar ============ -->
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">◐</span>
+          <span class="brand-name">Skyline</span>
+        </div>
+
+        <form class="search-form" id="searchForm" autocomplete="off">
+          <input
+            type="text"
+            id="cityInput"
+            class="search-input"
+            placeholder="Search a city…"
+            aria-label="Search a city"
+          />
+          <button type="submit" class="icon-btn" aria-label="Search">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M21 20.3l-5.4-5.4a7.6 7.6 0 1 0-1.4 1.4l5.4 5.4zM4.5 10.1a5.6 5.6 0 1 1 11.2 0 5.6 5.6 0 0 1-11.2 0z"/></svg>
+          </button>
+          <button type="button" class="icon-btn" id="locateBtn" aria-label="Use my location">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2a1 1 0 0 1 1 1v1.06A8.01 8.01 0 0 1 19.94 11H21a1 1 0 1 1 0 2h-1.06A8.01 8.01 0 0 1 13 19.94V21a1 1 0 1 1-2 0v-1.06A8.01 8.01 0 0 1 4.06 13H3a1 1 0 1 1 0-2h1.06A8.01 8.01 0 0 1 11 4.06V3a1 1 0 0 1 1-1zm0 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 3.4a2.6 2.6 0 1 1 0 5.2 2.6 2.6 0 0 1 0-5.2z"/></svg>
+          </button>
+        </form>
+
+        <button class="unit-toggle" id="unitToggle" type="button" aria-label="Toggle temperature unit">
+          °C&nbsp;/&nbsp;°F
+        </button>
+      </header>
+
+      <!-- ============ Recent searches ============ -->
+      <div class="recent-row" id="recentRow" hidden>
+        <span class="recent-label">Recent:</span>
+        <div class="recent-chips" id="recentChips"></div>
+      </div>
+
+      <!-- ============ Status (loading / error) ============ -->
+      <div class="status" id="status" hidden></div>
+
+      <!-- ============ Main hero ============ -->
+      <main class="hero" id="hero" hidden>
+        <div class="hero-left">
+          <p class="place-name" id="placeName">—</p>
+          <p class="place-meta" id="placeMeta">—</p>
+
+          <div class="temp-row">
+            <span class="temp-value" id="tempValue">--</span>
+            <span class="temp-unit" id="tempUnit">°C</span>
+          </div>
+
+          <p class="condition-text" id="conditionText">—</p>
+
+          <div class="stat-grid">
+            <div class="stat">
+              <span class="stat-label">Feels like</span>
+              <span class="stat-value" id="feelsLike">--°</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Humidity</span>
+              <span class="stat-value" id="humidity">--%</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Wind</span>
+              <span class="stat-value" id="wind">-- km/h</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">UV Index</span>
+              <span class="stat-value" id="uvIndex">--</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="weather-icon" id="weatherIcon">☀️</div>
+        </div>
+      </main>
+
+      <!-- ============ Forecast ============ -->
+      <section class="forecast" id="forecast" hidden>
+        <h2 class="forecast-title">Next 5 days</h2>
+        <div class="forecast-strip" id="forecastStrip"></div>
+      </section>
+
+      <!-- ============ Empty state ============ -->
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">🌤️</div>
+        <p>Search for a city or use your location to see the forecast.</p>
+      </div>
+
+      <footer class="app-footer">
+        Weather data from
+        <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a>
+        — a free, no-key-required REST API.
+      </footer>
+    </div>
+
+    <script src="./weather.js"></script>
+  </body>
+</html>
